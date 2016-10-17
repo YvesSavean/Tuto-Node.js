@@ -35,11 +35,11 @@ app.get('/city/getOne/:id', function(req, res) {
 });
 
 app.get('/sity/getAll', function(req, res) {
-	requestHandlers.getCity(req,res);
+	requestHandlers.getSity(req,res);
 });
 
 app.get('/sity/getOne/:id', function(req, res) {
-	requestHandlers.getOneCity(req,res,req.params.id);
+	requestHandlers.getOneSity(req,res,req.params.id);
 });
 
 function start() {

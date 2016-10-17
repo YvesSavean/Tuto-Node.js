@@ -40,12 +40,12 @@ function getOneCity(req,response,id) {
 
 //function qui permet de retourner toutes les données d'une table
 function getSity(req,response) {
-  cb.getCity(req,response);
+  sc.getSity(req,response);
 }
 
 //function qui permet de retourner  les données d'une table en fonction de l'id
 function getOneSity(req,response,id) {
-  cb.getOneCity(req,response,id);
+  sc.getOneSity(req,response,id);
 }
 
 //permet d'export la fonction  accueil pour l'utiliser en tant que module
@@ -56,3 +56,7 @@ exports.post = post;
 exports.getCity = getCity;
 //permet d'export la fonction  getOneCity pour l'utiliser en tant que module
 exports.getOneCity=getOneCity
+//permet d'export la fonction  getSity pour l'utiliser en tant que module
+exports.getSity = getSity;
+//permet d'export la fonction  getOneSity pour l'utiliser en tant que module
+exports.getOneSity=getOneSity

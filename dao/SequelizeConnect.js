@@ -1,45 +1,25 @@
-//Including dependency
-var Sequelize = require("sequelize");
+var city = require("./model/city");
  
-//Setting up the config
-var sequelize = new Sequelize('sakila', 'root', 'root', {
-    host: "localhost",
-    port: 3306,
-    dialect: 'mysql'
-});
-
-var User = sequelize.define('city', {
-  city_id: {
-    type: Sequelize.STRING
-  },
-  city: {
-    type: Sequelize.STRING
-  },
-  country_id: {
-    type: Sequelize.STRING
-  },
-  last_update: {
-    type: Sequelize.STRING
-  }
-});
-
 function getSity(req,res){
-	User.find({}).complete(function (err,data) {
+	city.getModel().findAll({raw: true}).then(function (err,data) {
 		if (err) {	
-			res.json({"code" : 100, "status" : "Error in connection database"});
-			return;
+			res.json({"code" : 100, "status" : "Error in connection database "});
+			throw err;
 		}   
 		res.json(data);
+		console.log("utilisation du connecteur sequelize");
 	});
 }
 
 function  getOneSity(req,res,id){
-    User.find({where:{city_id:id}}).complete(function (err, data) {
+	console.log("utilisation du connecteur sequelize");
+    city.getModel().find({where:{city_id:id}}).then(function (err, data) {
 		if (err) {	
-			res.json({"code" : 100, "status" : "Error in connection database"});
-			return;
+			res.json({"code" : 100, "status" : "Error in connection database "+err});
+			throw err;
 		}   
 		res.json(data);
+		console.log("utilisation du connecteur sequelize");
 	});
 }
 

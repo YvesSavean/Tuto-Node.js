@@ -23,6 +23,7 @@ function getCity(req,res){
 				connection.release();
 				if(!err) {
 					res.json(rows);
+					console.log("utilisation du connecteur basique");
 				}           
 			});
 
@@ -46,6 +47,7 @@ function  getOneCity(req,res,id){
 				connection.release();
 				if(!err) {
 					res.json(rows);
+					console.log("utilisation du connecteur basique");
 				}           
 			});
 
