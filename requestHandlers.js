@@ -3,7 +3,9 @@ var querystring = require("querystring");
 //Permet la récupération du module requestHandlers permettant la lecture de fichier
 var fs = require('fs');
 
-var cb = require('./dao/connectBase')
+var cb = require('./dao/connectBase');
+
+var sc = require('./dao/SequelizeConnect');
 
 //function qui permet d'afficher la page d'accueil
 function accueil(response,postData) {
@@ -33,6 +35,16 @@ function getCity(req,response) {
 
 //function qui permet de retourner  les données d'une table en fonction de l'id
 function getOneCity(req,response,id) {
+  cb.getOneCity(req,response,id);
+}
+
+//function qui permet de retourner toutes les données d'une table
+function getSity(req,response) {
+  cb.getCity(req,response);
+}
+
+//function qui permet de retourner  les données d'une table en fonction de l'id
+function getOneSity(req,response,id) {
   cb.getOneCity(req,response,id);
 }
 

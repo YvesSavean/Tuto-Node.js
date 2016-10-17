@@ -34,6 +34,14 @@ app.get('/city/getOne/:id', function(req, res) {
 	requestHandlers.getOneCity(req,res,req.params.id);
 });
 
+app.get('/sity/getAll', function(req, res) {
+	requestHandlers.getCity(req,res);
+});
+
+app.get('/sity/getOne/:id', function(req, res) {
+	requestHandlers.getOneCity(req,res,req.params.id);
+});
+
 function start() {
  app.listen(8080);
 }

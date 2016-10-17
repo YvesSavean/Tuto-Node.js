@@ -4,7 +4,7 @@ myApp.service('dataService', function($http) {
     this.getData = function(callbackFunc) {
         $http({
             method: 'GET',
-            url: '/city/getAll',
+            url: '/sity/getAll',
         }).success(function(data){
             callbackFunc(data);
         }).error(function(){
@@ -17,7 +17,7 @@ myApp.service('serviceGetOne', function($http) {
     this.getData = function(callbackFunc,id) {
         $http({
             method: 'GET',
-            url: '/city/getOne/'+id,
+            url: '/sity/getOne/'+id,
         }).success(function(data){
             callbackFunc(data);
         }).error(function(){
