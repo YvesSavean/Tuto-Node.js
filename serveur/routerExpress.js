@@ -12,6 +12,7 @@ app.use(bodyParser.json());
 
 var port = process.env.PORT || 8080;
 
+
 app.get('/', function(req, res) {
     res.sendfile("./file/file1.html");
 });
@@ -19,6 +20,14 @@ app.get('/', function(req, res) {
 app.post('/post', function(req, res) {
 	var id=req.body.id;
 	requestHandlers.post(res,id);
+});
+
+app.get('/city/getAll', function(req, res) {
+	requestHandlers.getCity(req,res);
+});
+
+app.get('/city/getOne/:id', function(req, res) {
+	requestHandlers.getOneCity(req,res,req.params.id);
 });
 
 function start() {
