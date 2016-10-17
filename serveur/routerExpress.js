@@ -9,12 +9,16 @@ var app = express();
 //Here we are configuring express to use body-parser as middle-ware.
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-
+app.use('/jsclient/', express.static(__dirname + '/vue/jsclient'));
 var port = process.env.PORT || 8080;
 
 
 app.get('/', function(req, res) {
     res.sendfile("./file/file1.html");
+});
+
+app.get('/test', function(req, res) {
+    res.sendfile('./serveur/vue/index.html');
 });
 
 app.post('/post', function(req, res) {

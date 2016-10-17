@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+<title>Hello Angular!</title>
+<script src="jsclient/angular.js"></script>
+<script src="jsclient/indexControlleur.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<body ng-app="app">
+	<div class="container" ng-controller="HttpGetController">
+		<div class="row">
+			<form name="myForm" >
+				<label>id:
+					<input type="text" ng-change="change()" ng-model="id">
+				 </label>
+			</form>
+		<div>
+		<table class="table table-striped">
+			<thead>
+				<th>city_id</th>
+				<th>city</th>
+				<th>country_id</th>
+				<th>last_update</th>
+			</thead>
+			<tbody>
+				<tr ng-repeat="city in datas">
+					<td>{{city.city_id}}</td>
+					<td>{{city.city}}</td>
+					<td>{{city.country_id}}</td> 
+					<td>{{city.last_update}}</td> 
+				</tr>
+			</tbody>
+		</table>
+	</div>
+</body>
+</html>
