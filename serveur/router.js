@@ -4,7 +4,6 @@ var requestHandlers = require("./../requestHandlers");
 //mise en place de la gestion des paths et les fonctions correspondant 
 var handle = {};
 handle["/"] = requestHandlers.accueil;
-handle["/start"] = requestHandlers.start;
 handle["/post"] = requestHandlers.post;
 
 //function qui permet de router les appels
