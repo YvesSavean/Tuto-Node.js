@@ -1,6 +1,7 @@
-//Including dependency
+//Permet de récuperer l'Orm sequelize
 var Sequelize = require("sequelize");
 
+//function qui permet de récupérer le model d'une ville
 function getModel(sequelize){
 	
 	var city = sequelize.define('city', {
@@ -32,5 +33,5 @@ function getModel(sequelize){
 	return city;
 }
 
-//permet d'export la fonction  getSity pour l'utiliser en tant que module
+//permet d'export la fonction  getModel pour l'utiliser en tant que module
 exports.getModel = getModel;
