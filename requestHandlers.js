@@ -45,7 +45,16 @@ function getSity(req,response) {
 
 //function qui permet de retourner  les données d'une table en fonction de l'id
 function getOneSity(req,response,id) {
-  sc.getOneSity(req,response,id);
+  if(id.slice(-1) == "-"){
+	var idMod = id.substring(0,id.length-1);
+	sc.getOneSity(req,response,idMod);
+  }
+  else if(id.split("-").length >= 2){
+	var tableauId = id.split("-",2);
+	sc.getSityBetween(req,response,tableauId[0],tableauId[1]);
+  }else{
+	sc.getOneSity(req,response,id);
+  }
 }
 
 //permet d'export la fonction  accueil pour l'utiliser en tant que module

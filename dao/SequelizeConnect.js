@@ -12,7 +12,7 @@ var sequelize = new Sequelize('sakila', 'root', 'root', {
 	host: "localhost",
 	port: 3306,
 	dialect: 'mysql',
-	logging: false,
+	logging: true,
 
 		
 	pool: {
@@ -73,8 +73,38 @@ function  getOneSity(req,res,id){
 	});
 }
 
+//function permettant de récupérer une ville en fonction de l'id
+function  getSityBetween(req,res,min,max){
+	
+	city.getModel(sequelize).findAll(
+		{
+			where:{
+					city_id: {
+					$between: [parseInt(min), parseInt(max)]
+				}
+			},
+			limit:parseInt(max)
+		}).then(function (data, error) {
+		if (error != undefined){
+			if (error instanceof ValidationError) {
+				res.json({"code" : 100, "status" : "ValidationError in connection database "+error});
+				throw error;
+			}
+			else {
+				res.json({"code" : 100, "status" : error.constructor+" in connection database "+error});
+				throw error;
+			}
+		}
+		res.json(data);
+		console.log("utilisation du connecteur sequelize Between");
+	});
+}
+
 //permet d'export la fonction  getSity pour l'utiliser en tant que module
 exports.getSity = getSity;
 
 //permet d'export la fonction  getOneSity pour l'utiliser en tant que module
 exports.getOneSity = getOneSity;
+
+//permet d'export la fonction  getSityBetween pour l'utiliser en tant que module
+exports.getSityBetween=getSityBetween;
