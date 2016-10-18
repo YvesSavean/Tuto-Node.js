@@ -1,34 +1,13 @@
-function getModel(){
-	
-		//Including dependency
-	var Sequelize = require("sequelize");
+//Including dependency
+var Sequelize = require("sequelize");
 
-	//Setting up the config
-	var sequelize = new Sequelize('sakila', 'root', 'root', {
-		host: "localhost",
-		port: 3306,
-		dialect: 'mysql',
-		
-		pool: {
-			max: 5,
-			min: 0,
-			idle: 10000
-		}
-	});
-
-	sequelize
-	  .authenticate()
-	  .then(function(err) {
-		console.log('Connection has been established successfully.');
-	  }, function (err) { 
-		console.log('Unable to connect to the database:', err);
-	  });
+function getModel(sequelize){
 	
 	var city = sequelize.define('city', {
 		city_id: {
 				type: Sequelize.INTEGER,
 				primaryKey: true,
-				allowNull: false
+				autoIncrement: true
 			},
 		city: {
 				type: Sequelize.STRING,
@@ -39,7 +18,7 @@ function getModel(){
 				allowNull: false
 		},
 		last_update :{
-				type: Sequelize.DATE,
+				type: Sequelize.STRING,
 				allowNull: false
 		}
 		}, {
@@ -47,6 +26,8 @@ function getModel(){
 		   freezeTableName: true,
 		   timestamps: false
     });
+	
+	city.build();
 	
 	return city;
 }
