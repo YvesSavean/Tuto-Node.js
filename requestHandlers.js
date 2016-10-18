@@ -51,7 +51,17 @@ function getOneSity(req,response,id) {
   }
   else if(id.split("-").length >= 2){
 	var tableauId = id.split("-",2);
-	sc.getSityBetween(req,response,tableauId[0],tableauId[1]);
+	if(parseInt(tableauId[0])>parseInt(tableauId[1])){
+		sc.getSityBetween(req,response,parseInt(tableauId[1]),parseInt(tableauId[0]));	
+	}else{
+		console.log(tableauId[0]);
+		if(tableauId[0]==""){
+			sc.getSityBetween(req,response,0,parseInt(tableauId[1]));
+		}
+		else{
+		sc.getSityBetween(req,response,parseInt(tableauId[0]),parseInt(tableauId[1]));
+		}
+	}
   }else{
 	sc.getOneSity(req,response,id);
   }
